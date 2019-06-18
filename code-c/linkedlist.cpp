@@ -92,15 +92,73 @@ bool removeElem(Node** head,int pos) {
 	delNode = NULL;
 	return true;
 }
+/**
+ * 链表简单合并
+ */
+void unionList(Node* a, Node* b) {
+	Node* p = a;
+	while (p->next) {
+		p = p->next;
+	}
+	p->next = b;
+}/**
+  * 单链表倒置
+  */
+void reverse(Node** head) {
+	//[1]单链表为空表或者只有一个元素，直接返回
+	if (*head == NULL || (*head)->next == NULL) {
+		return;
+	}
+	Node* p = *head;
+	Node* q = p->next;
+	Node* r = q->next;
+	p->next = NULL;
+	while (true) {
+		q->next = p;
+		if (r == NULL) {
+			*head = q;
+			break;
+		}
+		else {
+			p = q;
+			q = r;
+			r = r->next;
+		}
+	}
+}
+
+void printElem(DataType data) {
+	cout << data << " ";
+}
+/**
+ * 遍历单链表
+ */
+void travel(Node* head,void(*fun)(DataType)) {
+	Node* p = head;
+	while (p) {
+		fun(p->data);
+		p = p->next;
+	}
+}
 
 int main()
 {
-	Node* head = NULL;
-	insertList(&head, 0, 1);
-	insertList(&head, 0, 2);
-	insertList(&head, 0, 3);
-	insertList(&head, 0, 4);
-	cout << getElem(head, 2)->data;
-	removeElem(&head, 1);
-	cout << getElem(head, 2)->data;
+	Node* head1 = NULL;
+	insertList(&head1, 0, 1);
+	insertList(&head1, 0, 2);
+	insertList(&head1, 0, 3);
+	insertList(&head1, 0, 4);
+
+	Node* head2 = NULL;
+	insertList(&head2, 0,4);
+	insertList(&head2, 0, 5);
+	insertList(&head2, 0, 1);
+	insertList(&head2, 0, 7);
+	cout << getElem(head1, 2)->data;
+	unionList(head1, head2);
+	cout << listLength(head1);
+
+	reverse(&head1);
+	travel(head1,printElem);
+	cout << getElem(head1,1)->data;
 }
