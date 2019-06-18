@@ -151,7 +151,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="circlelinkedlist.cpp" />
+    <ClCompile Include="DulNode.cpp" />
     <ClCompile Include="linkedlist.cpp" />
+    <ClCompile Include="seqlist.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
