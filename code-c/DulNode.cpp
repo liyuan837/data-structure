@@ -8,7 +8,7 @@ typedef struct DulNode {
 	DulNode* next;
 }DulNode;
 
-int main() {
+int main1() {
 	cout << 1;
 	return 0;
 }
